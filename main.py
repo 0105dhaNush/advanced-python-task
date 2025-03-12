@@ -1,8 +1,15 @@
-from functools import reduce
+people = [
+    {"name": "Arun", "age": 25},
+    {"name": "Balu", "age": 17},
+    {"name": "Chanthuru", "age": 19},
+    {"name": "Dhinesh", "age": 16},
+    {"name": "Ezhi", "age": 22}
+]
 
-# Lambda function to generate Fibonacci series up to n terms
-fibonacci = lambda n: reduce(lambda x, _: x + [x[-1] + x[-2]], range(n - 2), [0, 1])[:n]
+# Filter out people under 18
+adults = filter(lambda person: person["age"] >= 18, people)
 
-# Test the function
-n_terms = 10
-print(fibonacci(n_terms))
+# Map remaining people's names to a new list
+adult_names = list(map(lambda person: person["name"], adults))
+
+print(adult_names)
